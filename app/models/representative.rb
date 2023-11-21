@@ -17,7 +17,6 @@ class Representative < ApplicationRecord
         end
       end
 
-
       # rep = Representative.create!({
       #   name: official.name,
       #   ocdid: ocdid_temp,
@@ -27,8 +26,6 @@ class Representative < ApplicationRecord
       #   # party: "party from api",
       #   # photo_url: "url from api"
       # })
-
-
 
       # rep = Representative.create!({ name: official.name, ocdid: ocdid_temp, title: title_temp })
       # reps.push(rep)
@@ -42,9 +39,7 @@ class Representative < ApplicationRecord
       rep.ocdid = ocdid_temp
       rep.save!
       reps.push(rep)
-
     end
-
 
     reps
   end
