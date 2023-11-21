@@ -17,10 +17,17 @@ class Representative < ApplicationRecord
         end
       end
 
-      rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
-          title: title_temp })
-      reps.push(rep)
+      rep = Representative.create!({
+        name: official.name,
+        ocdid: ocdid_temp,
+        title: title_temp,
+        # new stuff
+        # address: "address from api",
+        # party: "party from api",
+        # photo_url: "url from api"
+      })
     end
+
 
     reps
   end
