@@ -1,0 +1,24 @@
+project:
+  name: 'CS169-fa23-31'
+  owner: 'fa23'
+  teamId: '31'
+  identities: {}
+  notifications:
+    email: 'tonyhuang@berkeley.edu'
+  members:
+    member1:
+      name: 'Zixun'
+      surname: 'Huang' 
+      githubUsername: 'bTonyHuang'
+    member2:
+      name: 'Kwan Man'
+      surname: 'Cheng' 
+      githubUsername: 'RaGnar0K12138'
+    member3:
+      name: 'Austin'
+      surname: 'Ahn' 
+      githubUsername: 'austinahn56'
+    member4:
+      name: 'David'
+      surname: 'Lim' 
+      githubUsername: 'dave-lims'
