@@ -1,0 +1,33 @@
+<%# app/views/representatives/show.html.erb %>
+<p>
+  <strong>Name:</strong>
+  <%= @representative.name %>
+</p >
+
+<p>
+  <strong>Title:</strong>
+  <%= @representative.title %>
+</p >
+
+<p>
+  <strong>OCD ID:</strong>
+  <%= @representative.ocdid %>
+</p >
+
+<p>
+  <strong>Address:</strong>
+  <%= @representative.address %>
+</p >
+
+<p>
+  <strong>Party:</strong>
+  <%= @representative.party %>
+</p >
+
+<p>
+  <strong>Photo:</strong>
+  <%= image_tag @representative.photo_url if @representative.photo_url.present? %>
+</p >
+
+<%= link_to 'Edit', edit_representative_path(@representative) %> |
+<%= link_to 'Back', representatives_path %>
