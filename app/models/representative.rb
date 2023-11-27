@@ -51,14 +51,17 @@ class Representative < ApplicationRecord
   end
 
   def self.rep_official_info_assign(rep, official)
-    address_temp = official.address[0]
-    rep.street_address = address_temp.line1
-    rep.city = address_temp.city
-    rep.state = address_temp.state
-    rep.zip = address_temp.zip
     rep.photo_url = 'https://www.whitehouse.gov/wp-content/uploads/2021/01/P20231115CF-0092.jpg?w=750&h=500&crop=1'
-
     rep.party = official.party
+
+    if official.address
+      address_temp = official.address[0]
+      rep.street_address = address_temp.line1
+      rep.city = address_temp.city
+      rep.state = address_temp.state
+      rep.zip = address_temp.zip
+    end
+
     rep
   end
 end
