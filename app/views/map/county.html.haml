@@ -9,7 +9,7 @@
                         %title  Map of #{@state.name} highlighting #{@county.name}
                         /* SVG element will be filled using d3.js and a topojson file. */
 
-= render 'representatives/table.html.haml'
+= render 'representatives/table.html.haml', representatives: @representatives
 
 #actionmap-info-box
 .d-none#actionmap-info-container{ 'data-counties': @county_details.to_json, 'data-state': @state.to_json,
