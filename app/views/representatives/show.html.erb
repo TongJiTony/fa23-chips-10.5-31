@@ -1,0 +1,48 @@
+<%# app/views/representatives/show.html.erb %>
+<p>
+  <strong>Photo:</strong>
+  <%= image_tag @representative.photo_url if @representative.photo_url.present? %>
+</p >
+
+<p>
+  <strong>Name:</strong>
+  <%= @representative.name %>
+</p >
+
+<p>
+  <strong>Title:</strong>
+  <%= @representative.title %>
+</p >
+
+<p>
+  <strong>OCD ID:</strong>
+  <%= @representative.ocdid %>
+</p >
+
+<p>
+  <strong>City:</strong>
+  <%= @representative.city %>
+</p >
+
+<p>
+  <strong>Street:</strong>
+  <%= @representative.street_address %>
+</p >
+
+<p>
+  <strong>State:</strong>
+  <%= @representative.state %>
+</p >
+
+<p>
+  <strong>Zip Code:</strong>
+  <%= @representative.zip %>
+</p >
+
+<p>
+  <strong>Party:</strong>
+  <%= @representative.party %>
+</p >
+
+<%= link_to 'Edit', edit_representative_path(@representative) %> |
+<%= link_to 'Back', representatives_path %>
