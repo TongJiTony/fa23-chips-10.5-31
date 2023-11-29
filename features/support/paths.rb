@@ -21,6 +21,22 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
+    
+    #when /^the (.*) state page$/
+    #  path = $1.push('path').join('_')
+    #  path = '/state/$1'
+    #  puts path
+    #  self.send(path)
+
+    when /^the (.*), (.*) page$/
+      case $1
+      when "San Diego"
+        # FOR NOW:
+        #   can't find a way to get each county's state + fip at the moment
+        #   brute testing
+        path = '/state/CA/county/073'
+        path
+      end
 
     else
       begin

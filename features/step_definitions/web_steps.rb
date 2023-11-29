@@ -47,13 +47,17 @@ Given /^(?:|I )am on (.+)$/ do |page_name|
 end
 =end
 
+=begin <<< TO MOVE OVER TO NEW STEPS >>>
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
+=end
 
+=begin <<< TO MOVE OVER TO NEW STEPS >>>
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
+=end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
