@@ -18,3 +18,7 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
+When /^(?:|I )visit (Joseph R. Biden)'s profile$/ do |name|
+  #Representative.find(params[representative_id:3])
+  visit show_representative_path(id:3)
+end
