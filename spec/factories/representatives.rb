@@ -8,12 +8,11 @@ FactoryBot.define do
     # Define attributes for the representative
     name { 'Fake name' }
     title { 'A fake title' }
-    party {'fake party'}
-    ocdid {'fake id'}
-    photo_url {'http://fake.com'}
-    city {'fake city'}
-    street_address {'fake street'}
-    state {'fake state'}
-    zip {'fake zip'}
+    party { 'fake party' }
+    photo_url { 'http://fake.com' }
+    city { 'fake city' }
+    street_address { 'fake street' }
+    state { 'fake state' }
+    zip { 'fake zip' }
   end
 end
