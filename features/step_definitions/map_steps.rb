@@ -34,3 +34,5 @@ end
 When /^(?:|I )choose the link "([^"]*)"$/ do |link|
   click_link(link)
 end
+
+# For login profile
