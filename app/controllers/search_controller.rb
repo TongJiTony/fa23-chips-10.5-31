@@ -5,7 +5,7 @@ require 'google/apis/civicinfo_v2'
 class SearchController < ApplicationController
   def search
     address = params[:address]
-   
+
     if address.nil?
       redirect_to '/representatives'
       return

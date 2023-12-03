@@ -21,12 +21,16 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
 end
 
 # for display profile Cucumber tests
-Given("I search representatives of CA") do
+Given('I search representatives of CA') do
   visit '/search?address=CA'
 end
 
-When("I click the {string} link for {string}") do |link_text, representative_name|
+When('I click the {string} link for {string}') do |link_text, representative_name|
   within(find('tr', text: representative_name)) do
     click_link(link_text)
   end
+end
+
+When /^(?:|I )choose the link "([^"]*)"$/ do |link|
+  click_link(link)
 end
