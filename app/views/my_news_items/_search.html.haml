@@ -26,7 +26,7 @@
         .col-sm-3
             = label :news_item, :representative_id, class: 'col-form-label'
         .col-sm-9
-            = hidden_field_tag :representative_id, @representative_id
+            = hidden_field_tag :representative_id, representative_id
             = text_field_tag :news_item, representative.name, readonly: true, class: 'form-control'
     .form-group.row
         .col-sm-3

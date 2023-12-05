@@ -3,18 +3,11 @@
         %h1.text-center Edit news article
 
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        = render 'form', news_item: @news_item,
-          form_url: representative_new_my_news_item_path(@representative),
-          form_method: :post,
+        = render 'form',
+          form_url: representative_search_news_item_with_rep_issue_path,
+          form_method: :get,
           representatives_list: @representatives_list,
           issue_list: ['Free Speech', 'Immigration', 'Terrorism', 'Social Security and Medicare',
             'Abortion', 'Student Loans', 'Gun Control', 'Unemployment', 'Climate Change',
             'Homelessness', 'Racism', 'Tax Reform', 'Net Neutrality', 'Religious Freedom',
             'Border Security', 'Minimum Wage', 'Equal Pay']
-
-    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        .clearfix.mt-3
-            .float-right
-                = link_to representative_news_items_path(@representative), class: 'btn btn-info' do
-                    View news article
-                    %i.fas.fa-arrow-right
