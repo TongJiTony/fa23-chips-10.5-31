@@ -7,8 +7,9 @@ class MyNewsItemsController < SessionController
 
   # action for news search based on representative and issue
   def search
+    @representative_id = params[:representative_id]
     @issue = params[:issue]
-    
+    @news_item = NewsItem.new
   end
 
   def new
