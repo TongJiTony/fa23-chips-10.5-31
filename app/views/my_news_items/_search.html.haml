@@ -7,27 +7,12 @@
         - news_item.errors.full_messages.each do |message|
           %li= message
 
-  %table
-    %thead
-      %tr
-        %th Title
-        %th Link
-        %th Description
-        %th Select
-    %tbody
-      - news_list.each_with_index do |news, index|
-        %tr
-          %td= news[:title]
-          %td= link_to news[:link], news[:link], target: '_blank'
-          %td= news[:description]
-          %td= radio_button_tag 'selected_news', index
-
   .form-group.row
     .col-sm-3
       = f.label :representative_id, class: 'col-form-label'
     .col-sm-9
       = f.hidden_field :representative_id, value: representative_id
-      = text_field_tag :representative_name, representative.name, readonly: true, class: 'form-control'
+      = link_to representative.name, show_representative_path(id: representative_id)
 
   .form-group.row
     .col-sm-3
@@ -35,6 +20,25 @@
     .col-sm-9
       = f.hidden_field :issue, value: issue
       = text_field_tag :issue, issue, readonly: true, class: 'form-control'
+
+  %table
+    %thead
+      %tr
+        %th 
+        %th Title
+        %th 
+        %th Description
+        %th 
+        %th Link
+    %tbody
+      - news_list.each_with_index do |news, index|
+        %tr
+          %td= radio_button_tag 'selected_news', index
+          %td= news[:title]
+          %td= '      '
+          %td= news[:description]
+          %td= '      '
+          %td= link_to news[:link], news[:link], target: '_blank'
 
   .form-group.row
     .col-sm-3

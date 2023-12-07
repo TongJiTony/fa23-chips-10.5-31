@@ -13,8 +13,8 @@ class NewsItem < ApplicationRecord
   # given representative and issue, using name and issue as keywords
   # calling news api to get the top 5
   # and return as a list of news items
-  def self.search_by_rep_issue(rep, issue, api_key='6b82005868034242984854d7a6d1d028')
-    
+  def self.search_by_rep_issue(rep, issue)
+    api_key = '6b82005868034242984854d7a6d1d028'
     default_uri = 'https://newsapi.org/v2/everything?'
 
     # Use CGI.escape to properly encode query parameters
@@ -25,31 +25,34 @@ class NewsItem < ApplicationRecord
     # Construct the URI with properly encoded query parameters
     uri = "#{default_uri}apiKey=#{escaped_api_key}&q=#{escaped_rep_name}+AND+#{escaped_issue}"
 
+    results = get_response(uri)
+    return nil if results.nil?
+
+    produce_news_list(results)
+  end
+
+  def self.get_response(uri)
     # Make the HTTP GET request using Faraday
     response = Faraday.get(uri)
     response = JSON.parse(response.body)
+    response['articles']
+  end
 
+  def self.produce_news_list(results)
     news_items = []
-    results = response['articles']
-
     count = 0
-    return nil if results.nil?
 
     results.each do |result|
       news_item = {
-        title:       result['title'],
+        title:       result['title'].slice(0..20),
         link:        result['url'],
-        description: result['content'].slice(0..100)
+        description: result['content'].slice(0..50)
       }
       news_items.push(news_item)
       count += 1
       return news_items if count == 5
     end
-    if count == 0
-      return nil
-    end
-
-    puts news_items
+    return nil if count.zero?
     news_items
   end
 end
