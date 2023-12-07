@@ -21,7 +21,7 @@
             = label :news_item, :description, class: 'col-form-label'
         .col-sm-9
             = text_area :news_item, :description, { class: 'form-control',
-            placeholder: 'Describe the contents of the article...' }
+            placeholder: news_list[0].description }
     .form-group.row
         .col-sm-3
             = label :news_item, :representative_id, class: 'col-form-label'
@@ -33,6 +33,5 @@
             = label :news_item, :issue, class: 'col-form-label'
         .col-sm-9
             = text_field_tag :news_item, issue, readonly: true, class: 'form-control'
-
     .actions
         = f.submit 'Save', class: 'btn btn-primary'

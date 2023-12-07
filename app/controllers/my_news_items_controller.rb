@@ -11,6 +11,7 @@ class MyNewsItemsController < SessionController
     @representative = Representative.find(@representative_id)
     @issue = params[:issue]
     @news_item = NewsItem.new
+    @news_list = NewsItem.search_by_rep_issue(@representative, @issue)
   end
 
   def new
