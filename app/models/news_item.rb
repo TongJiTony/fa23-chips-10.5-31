@@ -39,7 +39,7 @@ class NewsItem < ApplicationRecord
       news_item = {
         title:       result['title'],
         link:        result['url'],
-        description: result['content'].slice(0..30)
+        description: result['content'].slice(0..100)
       }
       news_items.push(news_item)
       count += 1

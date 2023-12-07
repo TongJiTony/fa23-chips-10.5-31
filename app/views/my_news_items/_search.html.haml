@@ -36,5 +36,10 @@
       = f.hidden_field :issue, value: issue
       = text_field_tag :issue, issue, readonly: true, class: 'form-control'
 
+  .form-group.row
+    .col-sm-3
+      = f.label :rating, class: 'col-form-label'
+    .col-sm-9
+      = f.select :rating, rating_list, { include_blank: true }, class: 'form-control'
   .actions
     = f.submit 'Save', class: 'btn btn-primary'

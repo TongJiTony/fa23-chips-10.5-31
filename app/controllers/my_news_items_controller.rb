@@ -18,9 +18,7 @@ class MyNewsItemsController < SessionController
     session[:news_list] = @news_list
   end
 
-  def new
-    @news_item = NewsItem.new
-  end
+  def new; end
 
   def edit; end
 
@@ -75,6 +73,6 @@ class MyNewsItemsController < SessionController
 
   # Only allow a list of trusted parameters through.
   def news_item_params
-    params.require(:news_item).permit(:news, :title, :description, :link, :representative_id, :issue)
+    params.require(:news_item).permit(:news, :title, :description, :link, :representative_id, :issue, :rating)
   end
 end
