@@ -40,6 +40,8 @@ Rails.application.routes.draw do
                                                                       via: %i[put patch]
         match '/representatives/:representative_id/my_news_item/:id', to:  'my_news_items#destroy',
                                                                       via: [:delete]
+        get '/representatives/:representative_id/my_news_item/new/search' => 'my_news_items#search',
+            :as                                                    => :search_news_item_with_rep_issue
     end
     get '/search/(:address)' => 'search#search', :as => 'search_representatives'
 end

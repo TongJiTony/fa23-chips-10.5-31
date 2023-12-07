@@ -5,8 +5,15 @@ class MyNewsItemsController < SessionController
   before_action :set_representatives_list
   before_action :set_news_item, only: %i[edit update destroy]
 
-  def new
+  # action for news search based on representative and issue
+  def search
+    @representative_id = params[:rep_id]
+    @representative = Representative.find(@representative_id)
+    @issue = params[:issue]
     @news_item = NewsItem.new
+  end
+
+  def new
   end
 
   def edit; end
