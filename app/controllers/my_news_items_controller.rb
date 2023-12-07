@@ -12,21 +12,34 @@ class MyNewsItemsController < SessionController
     @issue = params[:issue]
     @news_item = NewsItem.new
     @news_list = NewsItem.search_by_rep_issue(@representative, @issue)
+    if @news_list.nil?
+      render :new, error: 'No news found with these params'
+    end
+    session[:news_list] = @news_list
   end
 
   def new
+    @news_item = NewsItem.new
   end
 
   def edit; end
 
   def create
     @news_item = NewsItem.new(news_item_params)
+    news_index = params[:selected_news].to_i
+    news_list = session[:news_list]
+
+    @news_item.title=news_list[news_index]["title"] 
+    @news_item.description=news_list[news_index]["description"]
+    @news_item.link=news_list[news_index]["link"]
+
     if @news_item.save
       redirect_to representative_news_item_path(@representative, @news_item),
                   notice: 'News item was successfully created.'
     else
       render :new, error: 'An error occurred when creating the news item.'
     end
+    session[:news_list] = nil
   end
 
   def update
