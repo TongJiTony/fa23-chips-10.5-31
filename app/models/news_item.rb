@@ -53,6 +53,7 @@ class NewsItem < ApplicationRecord
       return news_items if count == 5
     end
     return nil if count.zero?
+
     news_items
   end
 end

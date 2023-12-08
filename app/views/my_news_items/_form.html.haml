@@ -1,13 +1,13 @@
 = form_with url: form_url, html: { method: form_method } do |f|
-  .form-group.row
-    .col-sm-3
-      = f.label :representative, class: 'col-form-label'
-    .col-sm-9
-      = f.select :rep_id, representatives_list, { include_blank: true }, class: 'form-control'
-  .form-group.row
-    .col-sm-3
-      = f.label :issue, class: 'col-form-label'
-    .col-sm-9
-      = f.select :issue, issue_list, { include_blank: true }, class: 'form-control'
-  .actions
-    = f.submit 'Search', class: 'btn btn-primary'
+    .form-group.row
+        .col-sm-3
+            = f.label :representative, class: 'col-form-label'
+        .col-sm-9
+            = f.select :rep_id, representatives_list, { include_blank: true }, class: 'form-control', id: 'Representative'
+    .form-group.row
+        .col-sm-3
+            = f.label :issue, class: 'col-form-label'
+        .col-sm-9
+            = f.select :issue, issue_list, { include_blank: true }, class: 'form-control', id: 'Issue'
+    .actions
+        = f.submit 'Search', class: 'btn btn-primary'
