@@ -6,6 +6,7 @@
         = render 'form',
           form_url: representative_search_news_item_with_rep_issue_path,
           form_method: :get,
+          news_item: @news_item,
           representatives_list: @representatives_list,
           issue_list: ['Free Speech', 'Immigration', 'Terrorism', 'Social Security and Medicare',
             'Abortion', 'Student Loans', 'Gun Control', 'Unemployment', 'Climate Change',

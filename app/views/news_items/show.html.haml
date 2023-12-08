@@ -13,6 +13,10 @@
                     %dt.col-sm-9
                         = @news_item.description
                 %dl.row
+                    %dt.col-sm-3.text-md-right Rating:
+                    %dt.col-sm-9
+                        = @news_item.rating
+                %dl.row
                     %dt.col-sm-3.text-md-right Representative:
                     %dt.col-sm-9
                         %a{ href: show_representative_path(id: @representative.id) }

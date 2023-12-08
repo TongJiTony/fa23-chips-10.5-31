@@ -25,9 +25,16 @@ Given('I search representatives of CA') do
   visit '/search?address=CA'
 end
 
+# For login profile
 When('I click the {string} link for {string}') do |link_text, representative_name|
   within(find('tr', text: representative_name)) do
     click_link(link_text)
+  end
+end
+
+When('I click the {string} button for {string}') do |button_text, representative_name|
+  within(find('tr', text: representative_name)) do
+    click_button(button_text)
   end
 end
 
@@ -35,4 +42,18 @@ When /^(?:|I )choose the link "([^"]*)"$/ do |link|
   click_link(link)
 end
 
-# For login profile
+# For create news item
+When("I select {string} from the {string} dropdown") do |option, dropdown_id|
+  select option, from: dropdown_id
+end
+
+When("I select the radio option with title {string}") do |title|
+  # Find the row with the specified title within the table
+  row = find('tbody tr', text: title)
+
+  # Extract the index from the radio button name attribute
+  index = row.find('input[name="selected_news"]')[:id].match(/\d+/)[0].to_i
+
+  # Select the radio button
+  choose "selected_news_#{index}"
+end

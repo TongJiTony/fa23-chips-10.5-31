@@ -6,33 +6,44 @@
             %ul
                 - news_item.errors.full_messages.each do |message|
                     %li= message
-    .form-group.row
-        .col-sm-3
-            = label :news_item, :title, 'Title:', class: 'col-form-label'
-        .col-sm-9
-            = text_field :news_item, :title, { class: 'form-control', placeholder: 'Brief title of article...' }
-    .form-group.row
-        .col-sm-3
-            = label :news_item, :link, 'Link', class: 'col-form-label'
-        .col-sm-9
-            = text_field :news_item, :link, { class: 'form-control', placeholder: 'Link to external article...' }
-    .form-group.row
-        .col-sm-3
-            = label :news_item, :description, class: 'col-form-label'
-        .col-sm-9
-            = text_area :news_item, :description, { class: 'form-control',
-            placeholder: 'Describe the contents of the article...' }
-    .form-group.row
-        .col-sm-3
-            = label :news_item, :representative_id, class: 'col-form-label'
-        .col-sm-9
-            = hidden_field_tag :representative_id, representative_id
-            = text_field_tag :news_item, representative.name, readonly: true, class: 'form-control'
-    .form-group.row
-        .col-sm-3
-            = label :news_item, :issue, class: 'col-form-label'
-        .col-sm-9
-            = text_field_tag :news_item, issue, readonly: true, class: 'form-control'
 
+    .form-group.row
+        .col-sm-3
+            = f.label :representative_id, class: 'col-form-label'
+        .col-sm-9
+            = f.hidden_field :representative_id, value: representative_id
+            = link_to representative.name, show_representative_path(id: representative_id)
+
+    .form-group.row
+        .col-sm-3
+            = f.label :issue, class: 'col-form-label'
+        .col-sm-9
+            = f.hidden_field :issue, value: issue
+            = text_field_tag :issue, issue, readonly: true, class: 'form-control'
+
+    %table
+        %thead
+            %tr
+                %th
+                %th Title
+                %th
+                %th Description
+                %th
+                %th Link
+        %tbody
+            - news_list.each_with_index do |news, index|
+                %tr
+                    %td= radio_button_tag 'selected_news', index
+                    %td= news[:title]
+                    %td= '      '
+                    %td= news[:description]
+                    %td= '      '
+                    %td= link_to news[:link], news[:link], target: '_blank', rel: 'noopener'
+
+    .form-group.row
+        .col-sm-3
+            = f.label :rating, class: 'col-form-label'
+        .col-sm-9
+            = f.select :rating, rating_list, { include_blank: true }, class: 'form-control', id: 'Rating'
     .actions
         = f.submit 'Save', class: 'btn btn-primary'
