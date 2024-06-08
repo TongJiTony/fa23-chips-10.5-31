@@ -31,10 +31,36 @@ describe Representative do
                       party:   'Democratic Party')
     end
 
+    let(:official_nil_name) do
+      instance_double(Google::Apis::CivicinfoV2::Official,
+                      name:    nil,
+                      address: [
+                        instance_double(Google::Apis::CivicinfoV2::SimpleAddressType,
+                                        line1: '1001 Pennsylvania Avenue',
+                                        city:  'Washington',
+                                        state: 'DC',
+                                        zip:   '20500')
+                      ],
+                      party:   'Democratic Party')
+    end
+
+    let(:official_nil_party) do
+      instance_double(Google::Apis::CivicinfoV2::Official,
+                      name:    'Nick Biden',
+                      address: [
+                        instance_double(Google::Apis::CivicinfoV2::SimpleAddressType,
+                                        line1: '1001 Pennsylvania Avenue',
+                                        city:  'Washington',
+                                        state: 'DC',
+                                        zip:   '20500')
+                      ],
+                      party:   nil)
+    end
+
     let(:rep_info) do
       instance_double(
         Google::Apis::CivicinfoV2::RepresentativeInfoResponse,
-        officials: [official_test, official_nil_address],
+        officials: [official_test, official_nil_name, official_nil_address, official_nil_party],
         offices:   [offices]
       )
     end
