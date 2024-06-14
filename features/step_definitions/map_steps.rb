@@ -25,7 +25,6 @@ Given('I search representatives of CA') do
   visit '/search?address=CA'
 end
 
-# For login profile
 When('I click the {string} link for {string}') do |link_text, representative_name|
   within(find('tr', text: representative_name)) do
     click_link(link_text)
