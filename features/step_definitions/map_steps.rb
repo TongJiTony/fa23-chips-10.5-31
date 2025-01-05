@@ -2,6 +2,16 @@
 
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'paths'))
 
+# Adapter Pattern
+module AdapterHelper
+  def click_action_for_representative(action, representative_name)
+    within(find('tr', text: representative_name)) do
+      click_link(action)
+    end
+  end
+end
+World(AdapterHelper)  
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   # puts path_to(page_name)
   # used facade pattern
@@ -26,17 +36,23 @@ Given('I search representatives of CA') do
   visit '/search?address=CA'
 end
 
-When('I click the {string} link for {string}') do |link_text, representative_name|
-  within(find('tr', text: representative_name)) do
-    click_link(link_text)
-  end
+# When('I click the {string} link for {string}') do |link_text, representative_name|
+#   within(find('tr', text: representative_name)) do
+#     click_link(link_text)
+#   end
+# end
+
+# When('I click the {string} button for {string}') do |button_text, representative_name|
+#   within(find('tr', text: representative_name)) do
+#     click_button(button_text)
+#   end
+# end
+
+# Adapter Pattern
+When('I click the {string} link for {string}') do |action, representative_name|
+  click_action_for_representative(action, representative_name)
 end
 
-When('I click the {string} button for {string}') do |button_text, representative_name|
-  within(find('tr', text: representative_name)) do
-    click_button(button_text)
-  end
-end
 
 When /^(?:|I )choose the link "([^"]*)"$/ do |link|
   click_link(link)
