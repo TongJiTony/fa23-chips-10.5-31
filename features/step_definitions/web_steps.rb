@@ -31,6 +31,27 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+# facade method
+module PathHelper
+  def path_to(page_name)
+    case page_name
+    when 'the login page'
+      '/login'
+    when 'the representatives page'
+      '/representatives'
+    when 'the search representatives page for CA'
+      '/search?address=CA'
+    else
+      raise "Path to #{page_name} is not defined"
+    end
+  end
+end
+World(PathHelper)
+
+Given('I am on {string}') do |page_name|
+  visit path_to(page_name)
+end
+
 # Single-line step scoper
 When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
