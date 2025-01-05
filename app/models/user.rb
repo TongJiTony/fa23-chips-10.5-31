@@ -60,7 +60,7 @@ class User < ApplicationRecord
   end
 
   # Use strategy pattern to find user by provider and uid
-  def self.find_user_by_provider(uid)
+  def self.find_user_by_provider(provider, uid)
     strategy_class = PROVIDER_STRATEGIES.fetch(provider) do
       raise "Unknown provider: #{provider}"
     end
