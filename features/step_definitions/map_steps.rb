@@ -4,6 +4,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'pat
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
   # puts path_to(page_name)
+  # used facade pattern
   visit path_to(page_name)
 end
 
