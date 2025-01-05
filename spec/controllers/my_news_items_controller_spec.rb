@@ -5,6 +5,7 @@ require 'rails_helper'
 describe MyNewsItemsController do
   describe 'news_item' do
     before do
+      # Use Factory to create items
       @rep = create(:representative)
       @news = create(:news_item, title: 'fire_test', representative_id: 1, issue: 'racism')
     end

@@ -11,10 +11,9 @@ Scenario: display representatives in San Diego county from the representatives p
 Scenario: display representatives in San Diego county from the map page
   Given I am on the home page
   When I go to the San Diego, CA page
-  #TODO: Don't know why these are erroring:
-  #Then I should see "Joseph R. Biden"
-  #And I should see "Jordan Z. Marks"
-  #And I should not see "Karen Bass"
+  Then I should see "Joseph R. Biden"
+  And I should see "Jordan Z. Marks"
+  And I should not see "Karen Bass"
 
 Scenario: display representative's news article page
   Given I search representatives of CA

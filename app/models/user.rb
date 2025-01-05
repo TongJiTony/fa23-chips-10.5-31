@@ -11,10 +11,12 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  # use strategy patterns to create auth_provider
   def auth_provider
     {
       'google_oauth2' => 'Google',
       'github'        => 'Github'
+      # other providers could be added if necessary
     }[provider]
   end
 
